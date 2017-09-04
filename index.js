@@ -1,51 +1,67 @@
+/**
+ * A-Frame Wrapper for THREE.JS RectAreaLight
+ * @author Mo Kargas (DEVLAD) mo@devlad.com
+ */
+
 /* global AFRAME */
+/* global THREE */
 
 if (typeof AFRAME === 'undefined') {
-  throw new Error('Component attempted to register before AFRAME was available.');
+  throw new Error('Component attempted to register before AFRAME was available.')
 }
 
-/**
- * A-Frame wrapper for Three.js Rect Area Light component for A-Frame.
- */
+if (typeof THREE === 'undefined') {
+  throw new Error('Component attempted to register before THREE was available.')
+}
+
 AFRAME.registerComponent('area-light', {
-  schema: {},
+  schema: {
+    intensity:{
+      type: 'number',
+      default: 1.0
+    },
+    color: {
+      type: 'color',
+      default: '#FFFFFF'
+    },
+    width:{
+      type:'number',
+      default: 2
+    },
+    height:{
+      type: 'number',
+      default: 2
+    },
+    showHelper:{
+      type: 'boolean',
+      default: true
+    }
+  },
 
-  /**
-   * Set if component needs multiple instancing.
-   */
-  multiple: false,
+  init: function(){
 
-  /**
-   * Called once when component is attached. Generally for initial setup.
-   */
-  init: function () { },
+    this.rectLight = new THREE.RectAreaLight( this.data.color, this.data.intensity, this.data.width, this.data.height )
+    this.rectLight.position.set(this.data.width/2, 0, 0)
+    this.el.object3D.add(this.rectLight)
 
-  /**
-   * Called when component is attached and when component data changes.
-   * Generally modifies the entity based on the data.
-   */
-  update: function (oldData) { },
+    if(this.data.showHelper){
+      this.rectLightHelper = new THREE.RectAreaLightHelper( this.rectLight )
+      this.rectLightHelper.position.set(this.rectLight.position.x, 0, 0)
+      this.el.object3D.add(this.rectLightHelper)
+    }
 
-  /**
-   * Called when a component is removed (e.g., via removeAttribute).
-   * Generally undoes all modifications to the entity.
-   */
-  remove: function () { },
+  },
 
-  /**
-   * Called on each scene tick.
-   */
-  // tick: function (t) { },
+  update: function(oldData){
+    //Update light values
+    this.rectLight.color.set(this.data.color)
+    this.rectLight.intensity = this.data.intensity
+    this.rectLight.width = this.data.width
+    this.rectLight.height = this.data.height
 
-  /**
-   * Called when entity pauses.
-   * Use to stop or remove any dynamic or background behavior such as events.
-   */
-  pause: function () { },
-
-  /**
-   * Called when entity resumes.
-   * Use to continue or add any dynamic or background behavior such as events.
-   */
-  play: function () { }
+    if(this.rectLightHelper.length > 0){
+      this.rectLightHelper.setAttribute('visible', this.data.showHelpere)
+    }
+    
+  }
 });
