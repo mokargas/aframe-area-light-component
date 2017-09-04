@@ -11,7 +11,11 @@ For [A-Frame](https://aframe.io).
 
 | Property | Description | Default Value |
 | -------- | ----------- | ------------- |
-|          |             |               |
+|    intensity      |   intensity of the light output          |      1.0         |
+|    color      |   color of the light output (and helper if enabled)          |      1.0         |
+|    width      |   width of the light output          |      2.0         |
+|    height      |   height of the light output          |      2.0         |
+|    showHelper      |   Show the RectAreaLightHelper. Useful for positioning lights in the Inspector, or as a quick panel light       |      true        |
 
 ### Installation
 
@@ -22,13 +26,13 @@ Install and use by directly including the [browser files](dist):
 ```html
 <head>
   <title>My A-Frame Scene</title>
-  <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-area-light-component/dist/aframe-area-light-component.min.js"></script>
 </head>
 
 <body>
   <a-scene>
-    <a-entity area-light="foo: bar"></a-entity>
+    <a-entity area-light="intensity:4; width:1; height:1; color: #FFFFFF;"></a-entity>
   </a-scene>
 </body>
 ```
@@ -58,3 +62,9 @@ Then require and use.
 require('aframe');
 require('aframe-area-light-component');
 ```
+
+#### Recommended enhancements
+
+- Combine with [A-Frame Effects]() Bloom and `showHelper:true` for a neat glow effect
+
+#### TODO
