@@ -49,19 +49,25 @@ AFRAME.registerComponent('area-light', {
       this.rectLightHelper.position.set(this.rectLight.position.x, 0, 0)
       this.el.object3D.add(this.rectLightHelper)
     }
+    //console.debug(this.rectLightHelper)
 
   },
 
   update: function(oldData){
     //Update light values
-    this.rectLight.color.set(this.data.color)
+    let newColor = this.data.color
+    this.rectLight.color.set( newColor )
     this.rectLight.intensity = this.data.intensity
     this.rectLight.width = this.data.width
     this.rectLight.height = this.data.height
 
-    if(this.rectLightHelper.length > 0){
-      this.rectLightHelper.setAttribute('visible', this.data.showHelpere)
+    if(this.rectLightHelper !== undefined) {
+      this.rectLightHelper.visible = this.data.showHelper
+
+      //Set helper material color if enabled
+      //NOTE: RectLightHelper consists of submeshes https://github.com/mrdoob/three.js/blob/master/src/helpers/RectAreaLightHelper.js
+
+      this.rectLightHelper.children.forEach(node => node.material.color.set(newColor))
     }
-    
   }
 });
