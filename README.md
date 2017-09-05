@@ -5,7 +5,9 @@
 
 Add Area Lights to an A-Frame entity. Uses THREE.RectAreaLight at the core.
 
-For [A-Frame](https://aframe.io).
+![Example of Area Light](https://raw.githubusercontent.com/mokargas/aframe-area-light-component/master/examples/basic/aframe-area-light-component-low.gif" Example of Area Lights")
+
+For [A-Frame](https://aframe.io)
 
 ### Examples
 
