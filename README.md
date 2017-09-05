@@ -5,6 +5,8 @@
 
 Add Area Lights to an A-Frame entity. Uses THREE.RectAreaLight at the core.
 
+***WARNING: Area Lights are highly experimental and performance intensive at the moment. Please use sparingly***
+
 ![Example of Area Light](https://raw.githubusercontent.com/mokargas/aframe-area-light-component/master/examples/aframe-area-light-component-low.gif "Example of Area Lights")
 
 For [A-Frame](https://aframe.io)
@@ -12,7 +14,7 @@ For [A-Frame](https://aframe.io)
 ### Examples
 
 * [Basic](https://mokargas.github.io/aframe-area-light-component/examples/basic)
-* [Animation](https://mokargas.github.io/aframe-area-light-component/examples/Animation)
+* [Animation](https://mokargas.github.io/aframe-area-light-component/examples/animation)
 
 ### API
 
@@ -23,6 +25,7 @@ For [A-Frame](https://aframe.io)
 |    width      |   width of the light output          |      2.0         |
 |    height      |   height of the light output          |      2.0         |
 |    showHelper      |   Show the RectAreaLightHelper. Useful for positioning lights in the Inspector, or as a quick panel light (Note that the helper is single sided)       |      true        |
+|    helperColor      |  Given showHelper is enabled, set a custom color for it here     |      undefined        |
 
 ### Installation
 
@@ -77,3 +80,5 @@ require('aframe-area-light-component');
 #### TODO
 
 * Add tests :)
+* Performance fixes
+* Enable a simple plane rather than a helper (?)
