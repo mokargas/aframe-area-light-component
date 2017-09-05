@@ -12,7 +12,7 @@ For [A-Frame](https://aframe.io)
 ### Examples
 
 * [Basic](https://mokargas.github.io/aframe-area-light-component/examples/basic)
-* [Animation](https://mokargas.github.io/aframe-area-light-component/examples/Animation)
+* [Animation](https://mokargas.github.io/aframe-area-light-component/examples/animation)
 
 ### API
 
