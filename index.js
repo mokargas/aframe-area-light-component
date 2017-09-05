@@ -16,7 +16,7 @@ if (typeof THREE === 'undefined') {
 
 AFRAME.registerComponent('area-light', {
   schema: {
-    intensity:{
+    intensity: {
       type: 'number',
       default: 1.0
     },
@@ -24,50 +24,75 @@ AFRAME.registerComponent('area-light', {
       type: 'color',
       default: '#FFFFFF'
     },
-    width:{
-      type:'number',
-      default: 2.0
-    },
-    height:{
+    width: {
       type: 'number',
       default: 2.0
     },
-    showHelper:{
+    height: {
+      type: 'number',
+      default: 2.0
+    },
+    helperColor: {
+      type: 'color',
+      default: undefined
+    },
+    showHelper: {
       type: 'boolean',
       default: true
-    }
+    },
   },
 
-  init: function(){
+  init: function() {
+    this.setHelperColor = this.setHelperColor.bind(this)
 
-    this.rectLight = new THREE.RectAreaLight( this.data.color, this.data.intensity, this.data.width, this.data.height )
-    this.rectLight.position.set(this.data.width/2, 0, 0)
+    this.rectLight = new THREE.RectAreaLight(this.data.color, this.data.intensity, this.data.width, this.data.height)
+    this.rectLight.position.set(this.data.width / 2, 0, 0)
     this.el.object3D.add(this.rectLight)
 
-    if(this.data.showHelper){
-      this.rectLightHelper = new THREE.RectAreaLightHelper( this.rectLight )
+    //Helper set, assign to scene
+    if (this.data.showHelper) {
+
+      this.rectLightHelper = new THREE.RectAreaLightHelper(this.rectLight)
       this.rectLightHelper.position.set(this.rectLight.position.x, 0, 0)
       this.el.object3D.add(this.rectLightHelper)
+
+      //Determine if we have a different helperColor set
+      if (this.data.helperColor !== undefined) {
+        this.setHelperColor(this.data.helperColor)
+      } else {
+        this.setHelperColor(this.data.color)
+      }
     }
-    //console.debug(this.rectLightHelper)
 
   },
 
-  update: function(oldData){
+  setHelperColor: function(color) {
+    //Set helper material color if enabled
+    //NOTE: RectLightHelper consists of submeshes https://github.com/mrdoob/three.js/blob/master/src/helpers/RectAreaLightHelper.js
+    this.rectLightHelper.children.forEach(node => node.material.color.set(color))
+  },
+
+  update: function(oldData) {
+
     //Update light values
-    var newColor = this.data.color
-    this.rectLight.color.set( newColor )
     this.rectLight.intensity = this.data.intensity
     this.rectLight.width = this.data.width
     this.rectLight.height = this.data.height
+    this.rectLight.color.set( this.data.color )
 
-    if(this.rectLightHelper !== undefined) {
+    if (this.rectLightHelper !== undefined) {
       this.rectLightHelper.visible = this.data.showHelper
 
-      //Set helper material color if enabled
-      //NOTE: RectLightHelper consists of submeshes https://github.com/mrdoob/three.js/blob/master/src/helpers/RectAreaLightHelper.js
+      //Update, as child light may have changed dimensions
+      this.rectLightHelper.update()
 
-      this.rectLightHelper.children.forEach(node => node.material.color.set(newColor))
+      if (this.data.helperColor !== undefined) {
+        this.setHelperColor(this.data.helperColor)
+      } else {
+        this.setHelperColor(this.data.color)
+      }
+
+
     }
   }
 });

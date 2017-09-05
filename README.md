@@ -25,6 +25,7 @@ For [A-Frame](https://aframe.io)
 |    width      |   width of the light output          |      2.0         |
 |    height      |   height of the light output          |      2.0         |
 |    showHelper      |   Show the RectAreaLightHelper. Useful for positioning lights in the Inspector, or as a quick panel light (Note that the helper is single sided)       |      true        |
+|    helperColor      |  Given showHelper is enabled, set a custom color for it here     |      undefined        |
 
 ### Installation
 
@@ -79,3 +80,5 @@ require('aframe-area-light-component');
 #### TODO
 
 * Add tests :)
+* Performance fixes
+* Enable a simple plane rather than a helper (?)
