@@ -3,9 +3,14 @@
 [![Version](http://img.shields.io/npm/v/aframe-area-light-component.svg?style=flat-square)](https://npmjs.org/package/aframe-area-light-component)
 [![License](http://img.shields.io/npm/l/aframe-area-light-component.svg?style=flat-square)](https://npmjs.org/package/aframe-area-light-component)
 
-A-Frame wrapper for Three.js Rect Area Light
+Add Area Lights to an A-Frame entity
 
 For [A-Frame](https://aframe.io).
+
+### Examples
+
+* [Basic](https://mokargas.github.io/aframe-area-light-component/examples/basic)
+* [Animation](https://mokargas.github.io/aframe-area-light-component/examples/Animation)
 
 ### API
 
@@ -15,7 +20,7 @@ For [A-Frame](https://aframe.io).
 |    color      |   color of the light output (and helper if enabled)          |      1.0         |
 |    width      |   width of the light output          |      2.0         |
 |    height      |   height of the light output          |      2.0         |
-|    showHelper      |   Show the RectAreaLightHelper. Useful for positioning lights in the Inspector, or as a quick panel light       |      true        |
+|    showHelper      |   Show the RectAreaLightHelper. Useful for positioning lights in the Inspector, or as a quick panel light (Note that the helper is single sided)       |      true        |
 
 ### Installation
 
@@ -65,6 +70,8 @@ require('aframe-area-light-component');
 
 #### Recommended enhancements
 
-- Combine with [A-Frame Effects]() Bloom and `showHelper:true` for a neat glow effect
+* Combine with [A-Frame Effects](https://github.com/wizgrav/aframe-effects) post-processing effects like Bloom and `showHelper:true` for a neat glow effect
 
 #### TODO
+
+* Add tests :)
