@@ -3,7 +3,7 @@
 [![Version](http://img.shields.io/npm/v/aframe-area-light-component.svg?style=flat-square)](https://npmjs.org/package/aframe-area-light-component)
 [![License](http://img.shields.io/npm/l/aframe-area-light-component.svg?style=flat-square)](https://npmjs.org/package/aframe-area-light-component)
 
-Add Area Lights to an A-Frame entity
+Add Area Lights to an A-Frame entity. Uses THREE.RectAreaLight at the core.
 
 For [A-Frame](https://aframe.io).
 

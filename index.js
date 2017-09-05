@@ -26,11 +26,11 @@ AFRAME.registerComponent('area-light', {
     },
     width:{
       type:'number',
-      default: 2
+      default: 2.0
     },
     height:{
       type: 'number',
-      default: 2
+      default: 2.0
     },
     showHelper:{
       type: 'boolean',
