@@ -55,7 +55,7 @@ AFRAME.registerComponent('area-light', {
 
   update: function(oldData){
     //Update light values
-    let newColor = this.data.color
+    var newColor = this.data.color
     this.rectLight.color.set( newColor )
     this.rectLight.intensity = this.data.intensity
     this.rectLight.width = this.data.width
