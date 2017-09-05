@@ -1,6 +1,6 @@
 {
   "name": "aframe-area-light-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A-Frame wrapper for Three.js Rect Area Light",
   "main": "index.js",
   "cdn": "dist/aframe-area-light-component.min.js",
